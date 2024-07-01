@@ -8,8 +8,7 @@ public class VetApp {
     public static void main(String[] args) {
         List<Human> people = getHumans();
 
-
-        int ageTotal = 0;
+        int ageTotal;
 
         ageTotal = people.stream()
                         .map(Human -> Human.getAge())
@@ -18,12 +17,27 @@ public class VetApp {
 
         int avgAge = ageTotal / people.size();
 
-        System.out.println("Average age: " + avgAge);
+        System.out.println("\nAverage age: " + avgAge);
 
-        System.out.println("List of humans over 30: ");
+        System.out.println("\nList of humans over 30: ");
         people.stream()
             .filter(Human -> Human.getAge() > 30)
             .forEach(Human -> System.out.println("-> " + Human.getName()));
+
+        System.out.println("\nList of humans 30 or under: ");
+        people.stream()
+                .filter(Human -> Human.getAge() <= 30)
+                .forEach(Human -> System.out.println("-> " + Human.getName()));
+
+        System.out.println("\nNames in alphabetical order:");
+        people.stream()
+                .sorted()
+                .forEach(Human -> System.out.println("Name: " + Human.getName()));
+
+        System.out.println("\nNames in order of age:");
+        people.stream()
+                .sorted(new SortByAge())
+                .forEach(Human -> System.out.println("Name: " + Human.getName() + "  \tAge: " + Human.getAge()));
     }
 
     private static List<Human> getHumans() {

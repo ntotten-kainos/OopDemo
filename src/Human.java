@@ -1,4 +1,4 @@
-public class Human implements IPay {
+public class Human implements IPay, Comparable<Human> {
     public String getName() {
         return name;
     }
@@ -43,4 +43,8 @@ public class Human implements IPay {
                 '}';
     }
 
+    @Override
+    public int compareTo(Human o) {
+        return CharSequence.compare(this.getName(), o.getName());
+    }
 }
