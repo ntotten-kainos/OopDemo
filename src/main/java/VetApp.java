@@ -29,12 +29,12 @@ public class VetApp {
         System.out.println("\nList of humans over 30: ");
         people.stream()
             .filter(Human -> Human.getAge() > 30)
-            .forEach(Human -> System.out.println("-> " + Human.getName()));
+            .forEach(Human -> System.out.println("-> Name: " + Human.getName()));
 
         System.out.println("\nList of humans 30 or under: ");
         people.stream()
                 .filter(Human -> Human.getAge() <= 30)
-                .forEach(Human -> System.out.println("-> " + Human.getName()));
+                .forEach(Human -> System.out.println("-> Name: " + Human.getName()));
 
         System.out.println("\nNames in alphabetical order:");
         people.stream()
