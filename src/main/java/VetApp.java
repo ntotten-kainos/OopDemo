@@ -5,6 +5,7 @@ import main.java.sorting.SortByAge;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 public class VetApp {
     public static void main(String[] args) {
@@ -16,14 +17,12 @@ public class VetApp {
         System.out.println("\nOldest person: ");
         System.out.println(people.stream().max(new SortByAge()).get().getName());
 
-        int ageTotal;
+        double avgAge;
 
-        ageTotal = people.stream()
-                        .map(Human::getAge)
-                        .mapToInt(Integer::intValue)
-                        .sum();
+        avgAge = people.stream()
+                        .mapToInt(Human::getAge)
+                        .average().orElse(0);
 
-        int avgAge = ageTotal / people.size();
 
         System.out.println("\nAverage age: " + avgAge);
 
